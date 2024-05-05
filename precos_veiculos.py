@@ -21,22 +21,22 @@ print(num_carros)
 correlacao_carros = num_carros.corr()
 
 # Plotar a matriz
-#plt.figure(figsize=(10, 8))
-#sns.heatmap(correlacao_carros, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
-#plt.title('Matriz de Correlação Carros')
-#plt.show()
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlacao_carros, annot=True, cmap='coolwarm', fmt='.2f', linewidths=0.5)
+plt.title('Matriz de Correlação Carros')
+plt.show()
 
 # Análise de gráficos de dispersão
 
 # Pega cada coluna numérica e constrói um gráfico de dispersão em relação a preço
 
-#for column in num_carros.columns:
-#    plt.figure(figsize=(10,8))
-#    sns.scatterplot(data=num_carros, x=column, y='price')
-#    plt.title(f'Gráfico de dispersão {column} vs Preço')
-#    plt.xlabel(column)
-#    plt.ylabel("preço")
-#    plt.show()
+for column in num_carros.columns:
+    plt.figure(figsize=(10,8))
+    sns.scatterplot(data=num_carros, x=column, y='price')
+    plt.title(f'Gráfico de dispersão {column} vs Preço')
+    plt.xlabel(column)
+    plt.ylabel("preço")
+    plt.show()
 
 # A partir disso vamos pegar a dispersão de preço e enginesize e aplicar regressão linear simples
 
@@ -62,16 +62,16 @@ print(model.summary())
 
 # Gerando o gráfico da reta estimada
 
-#plt.figure(figsize=(10,8))
-#sns.scatterplot(data=num_carros, x='enginesize', y='price', color='green', alpha=0.5)
+plt.figure(figsize=(10,8))
+sns.scatterplot(data=num_carros, x='enginesize', y='price', color='green', alpha=0.5)
 
 # a função regplot gera a regressão e o plot da reta 
 
-#sns.regplot(data=num_carros, x='enginesize', y='price', scatter=False, color='red')
-#plt.title("Regressão do Preço do Veículo vs Tamanho")
-#plt.xlabel('Tamanho')
-#plt.ylabel('Preço')
-#plt.show()
+sns.regplot(data=num_carros, x='enginesize', y='price', scatter=False, color='red')
+plt.title("Regressão do Preço do Veículo vs Tamanho")
+plt.xlabel('Tamanho')
+plt.ylabel('Preço')
+plt.show()
 
 
 # Análise dos resíduos
@@ -84,18 +84,18 @@ predicted_values = model.fittedvalues
 #print(predicted_values)
 
 
-#plt.figure(figsize=(10,8))
-#plt.scatter(predicted_values, residuals, color='blue', alpha=0.5)
+plt.figure(figsize=(10,8))
+plt.scatter(predicted_values, residuals, color='blue', alpha=0.5)
 
 # adiciona linha
 
-#plt.axhline(y=0, color='red', linestyle='--')
+plt.axhline(y=0, color='red', linestyle='--')
 
 # titulos
-#plt.title("Resíduo vs Valor Predito")
-#plt.xlabel("Valor Predito")
-#plt.ylabel("Resíduo")
-#plt.show()
+plt.title("Resíduo vs Valor Predito")
+plt.xlabel("Valor Predito")
+plt.ylabel("Resíduo")
+plt.show()
 
 
 # Regressão Multipla
